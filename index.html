@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學長姐，畢業快樂！ - 畢業紀念</title>
+  <meta name="description" content="祝112學長姐們畢業快樂，願未來的每一步都充滿光芒，我們永遠為你們驕傲！">
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5405/5405403.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    @font-face {
+      font-family: 'ChenYuLuoYan';
+      src: url('fonts/ChenYuLuoYan.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap');
+    body {
+      background: linear-gradient(135deg, #FFD1DC, #B5EAD7, #C7CEEA);
+      color: #1e293b;
+      font-family: 'Noto Sans TC', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .confetti {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .confetti div {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: transparent;
+      opacity: 0.8;
+      animation: fall 8s linear infinite;
+    }
+    .confetti div::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: currentColor;
+      transform: rotate(45deg);
+      border-radius: 2px;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg) translateX(100px);
+        opacity: 0;
+      }
+    }
+    .carousel img {
+      transition: opacity 1s ease-in-out;
+    }
+    .carousel img.hidden { opacity: 0; }
+    .section-title {
+      font-family: 'Noto Serif TC', serif;
+      background: linear-gradient(to right, #FF6B6B, #4ECDC4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .message-card {
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+    }
+    .message-card:hover {
+      transform: rotate(0deg) scale(1.05);
+    }
+    .grad-cap {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .grad-cap:hover {
+      transform: scale(1.2);
+    }
+    .fancy-title {
+      animation: fancyGlow 2s infinite alternate;
+    }
+    @keyframes fancyGlow {
+      0% { text-shadow: 0 0 24px #fff, 0 0 48px #7F7FD5; }
+      100% { text-shadow: 0 0 48px #fff, 0 0 96px #91EAE4; }
+    }
+    .fancy-btn {
+      box-shadow: 0 0 24px #91EAE4, 0 0 48px #7F7FD5;
+      animation: btnBreath 1.8s infinite alternate;
+    }
+    @keyframes btnBreath {
+      0% { box-shadow: 0 0 24px #91EAE4, 0 0 48px #7F7FD5; }
+      100% { box-shadow: 0 0 48px #fff, 0 0 96px #91EAE4; }
+    }
+    .animate-float {
+      animation: floatBox 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes floatBox {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-18px); }
+    }
+    .blurred-bg {
+      filter: blur(8px) grayscale(0.2) brightness(0.9);
+      pointer-events: none;
+      user-select: none;
+    }
+    .pop-bounce {
+      animation: popBounce 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes popBounce {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.35); }
+      60% { transform: scale(0.92); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="relative">
+  <!-- 彩紙背景 -->
+  <div class="confetti" id="confetti"></div>
+
+  <!-- 魔幻時光寶盒 Popup -->
+  <div id="magic-box-popup" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-60 backdrop-blur-lg transition-all">
+    <div class="flex flex-col items-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-8 fancy-title" style="background: linear-gradient(90deg, #7F7FD5, #86A8E7, #91EAE4); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 24px #fff, 0 0 48px #7F7FD5; letter-spacing: 0.1em;">來自資管人的浪漫</h1>
+      <div class="relative mb-8">
+        <!-- 全新設計的魔法寶盒SVG -->
+        <svg id="magic-box" width="220" height="210" viewBox="0 0 220 210" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-lg animate-float">
+          <!-- 盒子底部陰影 -->
+          <ellipse cx="110" cy="195" rx="70" ry="15" fill="#bfa13a" opacity="0.18"/>
+          <!-- 盒身立體 -->
+          <rect x="40" y="100" width="140" height="70" rx="24" fill="url(#boxBody)" stroke="#bfa13a" stroke-width="6"/>
+          <!-- 盒身雕花 -->
+          <path d="M60 130 Q110 160 160 130" stroke="#fffbe6" stroke-width="2" fill="none" opacity="0.25"/>
+          <path d="M60 150 Q110 180 160 150" stroke="#fffbe6" stroke-width="2" fill="none" opacity="0.18"/>
+          <!-- 金屬邊 -->
+          <rect x="40" y="100" width="140" height="18" rx="9" fill="#ffe066" opacity="0.7"/>
+          <!-- 鎖頭 -->
+          <ellipse cx="110" cy="170" rx="14" ry="10" fill="#ffd700" stroke="#bfa13a" stroke-width="3"/>
+          <rect x="104" y="160" width="12" height="12" rx="4" fill="#fffbe6" stroke="#bfa13a" stroke-width="2"/>
+          <!-- 寶石 -->
+          <ellipse cx="110" cy="110" rx="10" ry="7" fill="url(#gem)" stroke="#bfa13a" stroke-width="2"/>
+          <!-- 盒蓋（動畫用） -->
+          <g id="box-lid-group">
+            <rect id="box-lid" x="40" y="60" width="140" height="50" rx="25" fill="url(#boxLid)" stroke="#bfa13a" stroke-width="6" style="transform-origin: 110px 85px; transition: transform 0.8s cubic-bezier(.68,-0.55,.27,1.55);"/>
+            <!-- 蓋子高光 -->
+            <ellipse cx="110" cy="70" rx="50" ry="10" fill="#fff" opacity="0.18"/>
+            <!-- 蓋子寶石 -->
+            <ellipse cx="110" cy="65" rx="8" ry="5" fill="url(#gem)" stroke="#bfa13a" stroke-width="1.5"/>
+          </g>
+          <!-- 光束動畫區（更大更浮誇） -->
+          <g id="box-light-group" style="opacity:0;">
+            <g id="box-lights">
+              <!-- 中央主光束 -->
+              <rect x="90" y="80" width="40" height="120" rx="20" fill="url(#lightGrad)" opacity="0.95"/>
+              <!-- 左右主光束 -->
+              <rect x="60" y="100" width="20" height="90" rx="10" fill="url(#lightGrad)" opacity="0.7"/>
+              <rect x="140" y="100" width="20" height="90" rx="10" fill="url(#lightGrad)" opacity="0.7"/>
+              <!-- 多條放射狀光束 -->
+              <rect x="110" y="80" width="10" height="110" rx="5" fill="url(#lightGrad)" opacity="0.5" transform="rotate(-20 110 80)"/>
+              <rect x="100" y="80" width="10" height="110" rx="5" fill="url(#lightGrad)" opacity="0.5" transform="rotate(20 110 80)"/>
+              <rect x="120" y="90" width="8" height="90" rx="4" fill="url(#lightGrad)" opacity="0.4" transform="rotate(-10 120 90)"/>
+              <rect x="90" y="90" width="8" height="90" rx="4" fill="url(#lightGrad)" opacity="0.4" transform="rotate(10 90 90)"/>
+            </g>
+            <!-- 超大光暈 -->
+            <ellipse cx="110" cy="100" rx="70" ry="30" fill="url(#lightHalo)" opacity="0.85">
+              <animate attributeName="opacity" values="0.85;0.5;0.85" dur="1.2s" repeatCount="indefinite"/>
+            </ellipse>
+            <ellipse cx="110" cy="100" rx="100" ry="45" fill="url(#lightHalo)" opacity="0.45">
+              <animate attributeName="opacity" values="0.45;0.2;0.45" dur="1.5s" repeatCount="indefinite"/>
+            </ellipse>
+          </g>
+          <defs>
+            <linearGradient id="boxBody" x1="40" y1="100" x2="180" y2="170" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffe066"/>
+              <stop offset="0.5" stop-color="#ffd700"/>
+              <stop offset="1" stop-color="#bfa13a"/>
+            </linearGradient>
+            <linearGradient id="boxLid" x1="40" y1="60" x2="180" y2="110" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#fffbe6"/>
+              <stop offset="0.5" stop-color="#ffe066"/>
+              <stop offset="1" stop-color="#bfa13a"/>
+            </linearGradient>
+            <radialGradient id="gem" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+              <stop offset="0%" stop-color="#7F7FD5"/>
+              <stop offset="100%" stop-color="#4ECDC4"/>
+            </radialGradient>
+            <linearGradient id="lightGrad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+              <stop offset="0%" stop-color="#fffbe6" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#fffbe6" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="lightHalo" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+              <stop offset="0%" stop-color="#fffbe6" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#fffbe6" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+        </svg>
+        <!-- 光束動畫容器（不再需要粒子） -->
+        <div id="box-light-anim" class="pointer-events-none absolute inset-0"></div>
+      </div>
+      <button id="open-box-btn" class="mt-2 px-8 py-4 text-2xl font-bold rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 text-white shadow-lg fancy-btn transition-all animate-pulse hover:scale-105 hover:shadow-2xl">打開寶盒</button>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-12">
+    <!-- 標題區 -->
+    <header class="text-center mb-12" data-aos="zoom-in">
+      <h1 class="text-5xl md:text-7xl font-bold section-title">學長姐，畢業快樂</h1>
+      <p class="text-xl md:text-2xl mt-4 text-gray-700">回憶綻放，祝福你們開啟新篇章</p>
+    </header>
+
+    <!-- 圖片輪播 -->
+    <section class="mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">我們的回憶</h2>
+      <div class="carousel relative w-full max-w-5xl mx-auto">
+        <div class="w-full h-[500px] overflow-hidden rounded-2xl shadow-xl" id="carousel-container">
+          <!-- 圖片將由 JavaScript 動態載入 -->
+        </div>
+        <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all" onclick="prevImage()">❮</button>
+        <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all" onclick="nextImage()">❯</button>
+      </div>
+    </section>
+
+    <!-- 影片區 -->
+    <section class="mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">畢業紀念影片</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div class="relative" style="padding-top: 56.25%;">
+          <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" 
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                  title="畢業影片1" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+        </div>
+        <div class="relative" style="padding-top: 56.25%;">
+          <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" 
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                  title="畢業影片2" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 時光軸 -->
+    <section class="mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">校園時光軸</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="relative border-l-4 border-blue-500 pl-6">
+          <div class="mb-10">
+            <h3 class="text-xl font-semibold text-gray-800">新生茶會</h3>
+            <p class="text-gray-600">初次相遇的溫暖，研究室學長姐的熱情，讓我們快速融入這個大家庭。</p>
+          </div>
+          <div class="mb-10">
+            <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-2"></div>
+            <h3 class="text-xl font-semibold text-gray-800">匹克球比賽</h3>
+            <p class="text-gray-600">揮灑汗水的球場上，我們一起奮戰，創造了無數歡樂的回憶。</p>
+          </div>
+          <div class="mb-10">
+            <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-2"></div>
+            <h3 class="text-xl font-semibold text-gray-800">日本參訪</h3>
+            <p class="text-gray-600">異國文化的探索之旅，讓我們一起開拓視野，收穫滿滿。</p>
+          </div>
+          <div class="mb-10">
+            <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-2"></div>
+            <h3 class="text-xl font-semibold text-gray-800">聖誕交換禮物</h3>
+            <p class="text-gray-600">溫馨的節日氛圍中，我們交換的不只是禮物，更是滿滿的祝福與關懷。</p>
+          </div>
+          <div class="mb-10">
+            <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2 top-2"></div>
+            <h3 class="text-xl font-semibold text-gray-800">畢業典禮</h3>
+            <p class="text-gray-600">學長姐們穿上碩士服，帶著我們的祝福，迎向人生的新篇章。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 留言板 -->
+    <section class="mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">學弟妹留言</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"祝學長姐們都找到理想的工作，未來一切順利心想事成～我們頂峰相見！" - 張詠欣</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"祝福學長姐們前程似錦，未來一切順利！" - 小A</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"感謝學長姐的照顧，祝福大家鵬程萬里！" - 小B</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"學長姐畢業快樂，未來都要幸福！" - 小C</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"祝福學長姐們一帆風順，心想事成！" - 小D</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"謝謝學長姐的陪伴，祝福大家未來閃耀！" - 小E</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"學長姐們畢業快樂，未來順利！" - 小F</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"祝福學長姐們夢想成真！" - 小G</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"感謝學長姐的指導，祝大家前途光明！" - 小H</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"學長姐畢業快樂，未來一切順利！" - 小I</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"祝福學長姐們鴻圖大展！" - 小J</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"謝謝學長姐的鼓勵，祝大家幸福快樂！" - 小K</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg message-card">
+          <p class="text-xl md:text-2xl text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">"學長姐畢業快樂，未來加油！" - 小L</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 互動區 -->
+    <section class="mb-16 text-center" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">點擊送祝福</h2>
+      <div class="flex justify-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/5405/5405403.png" class="grad-cap w-[100px] h-[100px]" id="grad-cap" alt="畢業帽">
+      </div>
+      <p class="text-2xl md:text-3xl mt-4 text-gray-700 font-bold transition-all duration-300" id="blessing-text" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive;">點擊畢業帽，送上你的祝福！</p>
+    </section>
+
+    <!-- 寄語區 -->
+    <section class="mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">師長們的祝福</h2>
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <!-- 卡片1 -->
+        <div class="flex items-center bg-white rounded-2xl shadow-lg p-6">
+          <img src="teacher/teacher1.jpg" alt="溫演福 教授" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300 mr-6">
+          <div>
+            <p class="text-xl md:text-2xl text-gray-800 mb-2" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">今天，你們即將展翅高飛，願未來的每一步都充滿光芒，我們永遠為你們驕傲！</p>
+            <p class="text-right text-base text-gray-600 font-semibold">－ 溫演福 教授</p>
+          </div>
+        </div>
+        <!-- 卡片2 -->
+        <div class="flex items-center bg-white rounded-2xl shadow-lg p-6">
+          <img src="teacher/teacher2.jpg" alt="汪志堅 教授" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300 mr-6">
+          <div>
+            <p class="text-xl md:text-2xl text-gray-800 mb-2" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">今天，你們即將展翅高飛，願未來的每一步都充滿光芒，我們永遠為你們驕傲！</p>
+            <p class="text-right text-base text-gray-600 font-semibold">－ 汪志堅 教授</p>
+          </div>
+        </div>
+        <!-- 卡片3 -->
+        <div class="flex items-center bg-white rounded-2xl shadow-lg p-6">
+          <img src="teacher/teacher3.jpg" alt="戴敏育 教授" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300 mr-6">
+          <div>
+            <p class="text-xl md:text-2xl text-gray-800 mb-2" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">今天，你們即將展翅高飛，願未來的每一步都充滿光芒，我們永遠為你們驕傲！</p>
+            <p class="text-right text-base text-gray-600 font-semibold">－ 戴敏育 教授</p>
+          </div>
+        </div>
+        <!-- 卡片4 -->
+        <div class="flex items-center bg-white rounded-2xl shadow-lg p-6">
+          <img src="teacher/teacher4.jpg" alt="江義平 教授" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300 mr-6">
+          <div>
+            <p class="text-xl md:text-2xl text-gray-800 mb-2" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">今天，你們即將展翅高飛，願未來的每一步都充滿光芒，我們永遠為你們驕傲！</p>
+            <p class="text-right text-base text-gray-600 font-semibold">－ 江義平 教授</p>
+          </div>
+        </div>
+        <!-- 卡片5 -->
+        <div class="flex items-center bg-white rounded-2xl shadow-lg p-6">
+          <img src="teacher/teacher5.jpg" alt="黃懷陞 助理教授" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300 mr-6">
+          <div>
+            <p class="text-xl md:text-2xl text-gray-800 mb-2" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">今天，你們即將展翅高飛，願未來的每一步都充滿光芒，我們永遠為你們驕傲！</p>
+            <p class="text-right text-base text-gray-600 font-semibold">－ 黃懷陞 助理教授</p>
+          </div>
+        </div>
+        <!-- 卡片6 -->
+        <div class="flex items-center bg-white rounded-2xl shadow-lg p-6">
+          <img src="teacher/teacher6.jpg" alt="潘令妍 助理教授" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300 mr-6">
+          <div>
+            <p class="text-xl md:text-2xl text-gray-800 mb-2" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold;">今天，你們即將展翅高飛，願未來的每一步都充滿光芒，我們永遠為你們驕傲！</p>
+            <p class="text-right text-base text-gray-600 font-semibold">－ 潘令妍 助理教授</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特別嘉賓區 -->
+    <section class="mb-16" data-aos="zoom-in">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">特別嘉賓：雅燕助教</h2>
+      <div class="flex flex-col items-center justify-center max-w-xl mx-auto p-8 rounded-3xl shadow-2xl bg-gradient-to-br from-pink-100 via-blue-100 to-green-100 relative overflow-visible">
+        <!-- 彩色光暈頭像 -->
+        <div class="relative mb-4">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-300 via-blue-300 to-green-300 blur-xl opacity-60 w-28 h-28"></div>
+          <img src="teacher/teacher7.png" alt="雅燕助教" class="w-28 h-28 rounded-full object-cover border-4 border-white relative z-10 shadow-lg">
+        </div>
+        <!-- 祝福語 -->
+        <div class="text-center mt-2 mb-4">
+          <p class="text-2xl md:text-3xl font-bold" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; font-weight: bold; letter-spacing: 0.05em;">
+            祝112的同學們畢業快樂，<br>
+            老娘也要畢業啦！Peace out！<br>
+            （此對話純屬虛構）
+          </p>
+        </div>
+        <!-- 署名 -->
+        <div class="w-full flex justify-end">
+          <p class="text-right text-base text-gray-600 font-semibold">－ 雅燕助教 💖 </p>
+        </div>
+        <!-- 星星裝飾 -->
+        <div class="absolute -top-4 left-8 text-yellow-400 text-2xl animate-pulse">★</div>
+        <div class="absolute -bottom-4 right-8 text-blue-400 text-xl animate-bounce">✦</div>
+      </div>
+    </section>
+
+    <!-- 祝福區 -->
+    <section data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-8 section-title">真摯祝福</h2>
+      <div class="max-w-4xl mx-auto text-lg md:text-xl text-gray-800 leading-relaxed text-center">
+        <p class="mb-4">親愛的學長姐，雖然我們只相處了一年，但這一年我們一起創造了無限回憶，</p>
+        <p class="mb-4">有歡笑，有淚水，有汗水，有收穫，有成長，有遺憾，有感動，有祝福。</p>
+        <p>今天，你們即將展翅高飛，願未來的每一步都充滿光芒，我們永遠為你們驕傲！</p>
+      </div>
+      <div class="mt-16 text-center">
+        <p class="text-5xl md:text-7xl font-extrabold tracking-wider" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive; background: linear-gradient(45deg, #FF6B6B, #4ECDC4); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">前程似錦，勇敢追夢！</p>
+        <p class="text-xl md:text-2xl mt-4 text-gray-700" style="font-family: 'ChenYuLuoYan', 'Ma Shan Zheng', cursive;">－ By 113年第24屆學弟妹 －</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // 彩紙效果
+    const confettiContainer = document.getElementById('confetti');
+    const colors = ['#FFD1DC', '#B5EAD7', '#C7CEEA', '#FF6B6B', '#4ECDC4'];
+    
+    for (let i = 0; i < 30; i++) {
+      const confetti = document.createElement('div');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDelay = Math.random() * 8 + 's';
+      confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+      confettiContainer.appendChild(confetti);
+    }
+
+    // 輪播功能
+    const carouselContainer = document.getElementById('carousel-container');
+    let currentImage = 0;
+    
+    // 圖片陣列
+    const images = [
+      'images/photo1.jpg',
+      'images/photo2.jpg',
+      'images/photo3.jpg',
+      'images/photo4.jpg',
+      'images/photo5.jpg',
+      'images/photo6.jpg',
+      'images/photo7.jpg',
+      'images/photo8.jpg',
+      'images/photo9.jpg',
+      'images/photo10.jpg',
+      'images/photo11.jpg',
+      'images/photo12.jpg',
+      'images/photo13.jpg',
+      'images/photo14.jpg',
+      'images/photo15.jpg',
+      'images/photo16.jpg',
+      'images/photo17.jpg',
+      'images/photo18.jpg',
+      'images/photo19.jpg',
+      'images/photo20.jpg',
+      'images/photo21.jpg',
+      'images/photo22.jpg',
+      'images/photo23.jpg',
+      'images/photo24.jpg',
+      'images/photo25.jpg',
+      'images/photo26.jpg',
+      'images/photo27.jpg',
+      'images/photo28.jpg',
+      'images/photo29.jpg',
+      'images/photo30.jpg',
+      'images/photo31.jpg',
+      'images/photo32.jpg',
+      'images/photo33.jpg',
+      'images/photo34.jpg',
+      'images/photo35.jpg',
+      'images/photo36.jpg',
+      'images/photo37.jpg',
+      'images/photo38.jpg',
+      
+    ];
+
+    // 初始化輪播
+    function initCarousel() {
+      images.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = `w-full h-full object-cover absolute ${index === 0 ? '' : 'hidden'}`;
+        img.alt = `回憶照片${index + 1}`;
+        carouselContainer.appendChild(img);
+      });
+    }
+
+    function showImage(index) {
+      const allImages = carouselContainer.getElementsByTagName('img');
+      allImages[currentImage].classList.add('hidden');
+      currentImage = index;
+      allImages[currentImage].classList.remove('hidden');
+    }
+
+    function nextImage() {
+      showImage((currentImage + 1) % images.length);
+    }
+
+    function prevImage() {
+      showImage((currentImage - 1 + images.length) % images.length);
+    }
+
+    // 初始化輪播
+    initCarousel();
+    setInterval(nextImage, 5000);
+
+    // 互動祝福
+    const blessings = [
+      '學長姐，前程似錦！',
+      '未來閃耀，勇敢追夢！',
+      '畢業快樂，星途璀璨！',
+      '展翅高飛，夢想成真！',
+      '畢業喜悅，未來無限！',
+      '勇敢追夢，學長姐最棒！',
+      '前程似錦，永遠支持你！',
+      '學長姐，永遠支持你！',
+      '新篇章，輝煌開啟！',
+      '心想事成，勇往直前！',
+      '祝福你們，繁星閃耀！',
+      '未來之路，順風順水！',
+      '學長姐，夢想照現實！',
+      '勇敢向前，光芒萬丈！',
+      '願你快樂，成功相隨！',
+      '學長姐，永遠最棒！',
+      '新旅程，精彩無限！',
+      '祝福滿滿，前途光明！',
+      '夢想啟航，未來輝煌！',
+      '學長姐，幸福常伴！',
+      '畢業榮耀，未來大展！'
+    ];
+    document.getElementById('grad-cap').addEventListener('click', () => {
+      const text = document.getElementById('blessing-text');
+      text.textContent = blessings[Math.floor(Math.random() * blessings.length)];
+      text.classList.remove('pop-bounce');
+      void text.offsetWidth; // 觸發重繪
+      text.classList.add('pop-bounce');
+    });
+
+    // 初始化 AOS
+    AOS.init({ duration: 1000, once: true });
+
+    // 魔幻寶盒進場
+    document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('magic-box-popup');
+      const openBtn = document.getElementById('open-box-btn');
+      const boxLid = document.getElementById('box-lid');
+      const boxLightGroup = document.getElementById('box-light-group');
+      const mainContent = document.querySelector('.container');
+      // 主頁模糊
+      if(mainContent) mainContent.classList.add('blurred-bg');
+      // 打開寶盒動畫
+      openBtn.addEventListener('click', function() {
+        // 蓋子打開動畫
+        boxLid.style.transform = 'rotateX(70deg) translateY(-30px)';
+        // 顯示光束動畫
+        if(boxLightGroup) {
+          boxLightGroup.style.opacity = 1;
+          boxLightGroup.style.transition = 'opacity 0.5s';
+          // 光束閃爍動畫
+          setTimeout(()=>{
+            boxLightGroup.style.opacity = 0.7;
+          }, 400);
+          setTimeout(()=>{
+            boxLightGroup.style.opacity = 1;
+          }, 700);
+        }
+        // 1.2秒後淡出popup，主頁恢復
+        setTimeout(()=>{
+          popup.style.opacity='0';
+          popup.style.pointerEvents='none';
+          if(mainContent) mainContent.classList.remove('blurred-bg');
+          setTimeout(()=>{popup.style.display='none';},600);
+        },1400);
+      });
+    });
+  </script>
+</body>
+</html>
